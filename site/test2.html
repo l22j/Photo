@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Photo Gallery</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #F2F2F2;
+			padding: 20px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			margin-bottom: 30px;
+		}
+
+		.gallery {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			margin: 0 auto;
+			max-width: 800px;
+		}
+
+		.gallery img {
+			width: 300px;
+			height: 300px;
+			object-fit: cover;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			margin-bottom: 20px;
+		}
+
+		.gallery img:hover {
+			transform: scale(1.1);
+			transition: transform 0.3s;
+		}
+
+		.gallery .caption {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: rgba(0, 0, 0, 0.5);
+			color: #fff;
+			font-size: 18px;
+			padding: 10px;
+			border-radius: 5px;
+			z-index: 1;
+		}
+
+		.gallery img:hover + .caption {
+			display: block;
+		}
+
+        .gallery .comment {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            font-size: 14px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery .comment:hover {
+            opacity: 1;
+        }
+	</style>
+</head>
+<body>
+	<h1>My Photo Gallery</h1>
+	<div class="gallery">
+	<div>
+		<img src="https://raw.githubusercontent.com/l22j/Photo/main/photo/230409_1.jpg" alt="Photo 1">
+		<div class="caption">Photo 1: I went to Starbucks today to buy coffee.</div>
+		<div class="comments">
+			<label for="comment1">Leave a comment:</label><br>
+			<input type="text" id="comment1" name="comment1"><br>
+			<button onclick="addComment('comment1', 'comments1')">Submit</button>
+			<ul id="comments1"></ul>
+		</div>
+	</div>
+	<div>
+		<img src="https://raw.githubusercontent.com/l22j/Photo/main/photo/230409_2.jpg" alt="Photo 2">
+		<div class="caption">Photo 2: Seasonal menu Basil Lemon Sorbet Blended and Ciabatta.</div>
+		<div class="comments">
+			<label for="comment2">Leave a comment:</label><br>
+			<input type="text" id="comment2" name="comment2"><br>
+			<button onclick="addComment('comment2', 'comments2')">Submit</button>
+			<ul id="comments2"></ul>
+		</div>
+	</div>
+	<div>
+		<img src="https://raw.githubusercontent.com/l22j/Photo/main/photo/230409_3.jpg" alt="Photo 3">
+		<div class="caption">Photo 3: I went to the park and saw these beautiful flowers.</div>
+		<div class="comments">
+			<label for="comment3">Leave a comment:</label><br>
+			<input type="text" id="comment3" name="comment3"><br>
+			<button onclick="addComment('comment3', 'comments3')">Submit</button>
+			<ul id="comments3"></ul>
+		</div>
+	</div>
+	<div>
+		<img src="https://raw.githubusercontent.com/l22j/Photo/main/photo/230409_4.jpg" alt="Photo 4">
+		<div class="caption">Photo 4: I visited a museum and saw this beautiful painting.</div>
+		<div class="comments">
+			<label for="comment4">Leave a comment:</label><br>
+			<input type="text" id="comment4" name="comment4"><br>
+			<button onclick="addComment('comment4', 'comments4')">Submit</button>
+			<ul id="comments4"></ul>
+		</div>
+	</div>
+</div>
+
+<script>
+	function addComment(inputId, listId) {
+		let inputElement = document.getElementById(inputId);
+		let listElement = document.getElementById(listId);
+		let newComment = document.createElement("li");
+		newComment.innerText = inputElement.value;
+		listElement.appendChild(newComment);
+		inputElement.value = "";
+	}
+</script>
+
+</body>
+</html>
