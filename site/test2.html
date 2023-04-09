@@ -53,28 +53,77 @@
 
 		.gallery img:hover + .caption {
 			display: block;
+		
+			<!-- CSS -->
+	<style>
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			padding-top: 100px;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.9);
+		}
+
+		.modal-content {
+			margin: auto;
+			display: block;
+			width: 80%;
+			max-width: 700px;
+			max-height: 80%;
+		}
+
+		.modal-content img {
+			width: 100%;
+			height: auto;
+			object-fit: contain;
+		}
+
+		.close {
+			position: absolute;
+			top: 10px;
+			right: 25px;
+			font-size: 35px;
+			font-weight: bold;
+			color: #f1f1f1;
+			cursor: pointer;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: #bbb;
+			text-decoration: none;
+			cursor: pointer;
 		}
 	</style>
 </head>
 <body>
 	<h1>My Photo Gallery</h1>
 	<div class="gallery">
-		<div>
+		<div data-modal class="myImg">
 			<img src="https://raw.githubusercontent.com/l22j/Photo/main/photo/230409_1.jpg" alt="Photo 1">
 			<div class="caption">Photo 1: I went to Starbucks today to buy coffee.</div>
 		</div>
-		<div>
+		<div data-modal class="myImg">
 			<img src="https://raw.githubusercontent.com/l22j/Photo/main/photo/230409_2.jpg" alt="Photo 2">
 			<div class="caption">Photo 2: Seasonal menu Basil Lemon Sorbet Blended and Ciabatta.</div>
 		</div>
-		<div>
+		<div data-modal class="myImg">
 			<img src="https://raw.githubusercontent.com/l22j/Photo/main/photo/230409_3.jpg" alt="Photo 3">
 			<div class="caption">Photo 3: good taste..🙂</div>
 		</div>
-		<div>
+		<div data-modal class="myImg">
 			<img src="https://raw.githubusercontent.com/l22j/Photo/main/photo/230409_4.jpg" alt="Photo 4">
 			<div class="caption">Photo 4: The weather is very nice today.</div>
 		</div>
+		<div id="myModal" class="modal">
+			<span class="close">&times;</span>
+		        <img class="modal-content" id="img01">
+			<div id="caption"></div>
 	</div>
 	
 	<script>
@@ -83,7 +132,31 @@
 			images[i].addEventListener('click', function() {
 				this.classList.toggle('enlarge');
 			});
+			
 		}
+				// Get the modal
+		var modal = document.getElementById("myModal");
+
+		// Get the image and insert it inside the modal - use its "alt" text as a caption
+		var img = document.getElementsByClassName("myImg");
+		var modalImg = document.getElementById("img01");
+		var captionText = document.getElementById("caption");
+		for (var i = 0; i < img.length; i++) {
+			img[i].onclick = function () {
+				modal.style.display = "block";
+				modalImg.src = this.src;
+				captionText.innerHTML = this.alt;
+			};
+		}
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function () {
+			modal.style.display = "none";
+		};
+	</script>
 	</script>
 </body>
 </html>
