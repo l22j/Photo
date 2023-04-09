@@ -30,7 +30,6 @@
 			border-radius: 5px;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 			margin-bottom: 20px;
-			cursor: pointer;
 		}
 
 		.gallery img:hover {
@@ -77,11 +76,14 @@
 			<div class="caption">Photo 4: The weather is very nice today.</div>
 		</div>
 	</div>
+	
+	<script>
+		var images = document.getElementsByTagName('img');
+		for (var i = 0; i < images.length; i++) {
+			images[i].addEventListener('click', function() {
+				this.classList.toggle('enlarge');
+			});
+		}
+	</script>
 </body>
 </html>
-
-<div id="myModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="img01">
-  <div id="caption"></div>
-</div>
