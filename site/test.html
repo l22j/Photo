@@ -30,6 +30,7 @@
 			border-radius: 5px;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 			margin-bottom: 20px;
+			cursor: pointer;
 		}
 
 		.gallery img:hover {
@@ -51,120 +52,147 @@
 			z-index: 1;
 		}
 
-		.gallery img:hover + .caption {
-			display: block;
-		}
-
-		.comment {
-			margin-top: 50px;
-			max-width: 800px;
-			margin: 0 auto;
-		}
-
-		.comment form {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			margin-bottom: 20px;
-		}
-
-		.comment label {
-			margin-bottom: 10px;
-			font-weight: bold;
-		}
-
-		.comment input, .comment textarea {
-			padding: 10px;
-			margin-bottom: 20px;
-			border: none;
-			border-radius: 5px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-			resize: none;
-		}
-
-		.comment input[type="submit"] {
-			background-color: #008CBA;
-			color: #fff;
-			font-size: 18px;
-			padding: 10px 20px;
-			cursor: pointer;
-			border: none;
-			border-radius: 5px;
-			box-shadow: none;
-			transition: background-color 0.3s;
-		}
-
-		.comment input[type="submit"]:hover {
-			background-color: #00688B;
-		}
-
-		.comment .message {
-			font-weight: bold;
-			margin-bottom: 10px;
-		}
-
-		.comment .name {
-			margin-right: 10px;
-		}
-
-		.comment .date {
-			color: #666;
-		}
-
-		.comment .text {
-			margin-bottom: 20px;
-			padding: 10px;
-			border-radius: 5px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		.gallery .comment-box {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 			background-color: #fff;
+			padding: 10px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			z-index: 1;
+			text-align: center;
+		}
+
+		.gallery .comment-box input[type="text"] {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 10px;
+			box-sizing: border-box;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			outline: none;
+		}
+
+		.gallery .comment-box input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.gallery .comment-box input[type="submit"]:hover {
+			background-color: #3E8E41;
 		}
 	</style>
 </head>
 <body>
-	<h1>
+	<h1>My Photo Gallery</h1>
 	<div class="gallery">
-		<img src="photo1.jpg" alt="Photo 1">
-		<div class="caption">Photo 1</div>
-		<img src="photo2.jpg" alt="Photo 2">
-		<div class="caption">Photo 2</div>
-		<img src="photo3.jpg" alt="Photo 3">
-		<div class="caption">Photo 3</div>
-		<img src="photo4.jpg" alt="Photo 4">
-		<div class="caption">Photo 4</div>
-		<img src="photo5.jpg" alt="Photo 5">
-		<div class="caption">Photo 5</div>
-		<img src="photo6.jpg" alt="Photo 6">
-		<div class="caption">Photo 6</div>
-		<img src="photo7.jpg" alt="Photo 7">
-		<div class="caption">Photo 7</div>
-		<img src="photo8.jpg" alt="Photo 8">
-		<div class="caption">Photo 8</div>
-	</div>
-	<div class="comment">
-		<h2>Leave a Comment</h2>
-		<form>
-			<label for="name">Name:</label>
-			<input type="text" id="name" name="name" required>
-		<label for="email">Email:</label>
-		<input type="email" id="email" name="email" required>
-
-		<label for="message">Message:</label>
-		<textarea id="message" name="message" rows="5" required></textarea>
-
-		<input type="submit" value="Submit">
-	</form>
-
-	<div class="message-list">
-		<h2>Message Board</h2>
-		<div class="message">
-			<span class="name">John</span>
-			<span class="date">March 10, 2023</span>
-			<div class="text">This is a great photo gallery!</div>
+		<div>
+			<img src="https://raw.githubusercontent.com/l22j/Photo/main/photo/230409_1.jpg" alt="Photo 1">
+			<div class="caption-container">
+				<div class="caption-text">
+					<h2>Photo 1</h2>
+					<p>This is the first photo.</p>
+				</div>
+				<button class="toggle-button">Add Comment</button>
+				<form class="comment-form" style="display: none;">
+					<label for="comment">Comment:</label>
+					<input type="text" id="comment" name="comment">
+					<button type="submit">Submit</button>
+				</form>
+				<ul class="comments">
+					<li class="comment">
+						<p>User1: Nice photo!</p>
+					</li>
+					<li class="comment">
+						<p>User2: I love the colors!</p>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<div class="message">
-			<span class="name">Mary</span>
-			<span class="date">March 11, 2023</span>
-			<div class="text">I agree, the photos are stunning!</div>
+		<div>
+			<img src="https://raw.githubusercontent.com/l22j/Photo/main/photo/230409_2.jpg" alt="Photo 2">
+			<div class="caption-container">
+				<div class="caption-text">
+					<h2>Photo 2</h2>
+					<p>This is the second photo.</p>
+				</div>
+				<button class="toggle-button">Add Comment</button>
+				<form class="comment-form" style="display: none;">
+					<label for="comment">Comment:</label>
+					<input type="text" id="comment" name="comment">
+					<button type="submit">Submit</button>
+				</form>
+				<ul class="comments">
+					<li class="comment">
+						<p>User3: Looks delicious!</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<img src="https://raw.githubusercontent.com/l22j/Photo/main/photo/230409_3.jpg" alt="Photo 3">
+			<div class="caption-container">
+				<div class="caption-text">
+					<h2>Photo 3</h2>
+					<p>This is the third photo.</p>
+				</div>
+				<button class="toggle-button">Add Comment</button>
+				<form class="comment-form" style="display: none;">
+					<label for="comment">Comment:</label>
+					<input type="text" id="comment" name="comment">
+					<button type="submit">Submit</button>
+				</form>
+				<ul class="comments">
+					<li class="comment">
+						<p>User4: Beautiful scenery!</p>
+					</li>
+					<li class="comment">
+						<p>User5: Wish I was there.</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<img src="https://raw.githubusercontent.com/l22j/Photo/main/photo/230409_4.jpg" alt="Photo 4">
+			<div class="caption-container">
+				<div class="caption-text">
+					<h2>Photo 4</h2>
+					<p>This is the fourth photo.</p>
+				</div>
+				<button class="toggle-button">Add Comment</button>
+				<form class="comment-form" style="display: none;">
+					<label for="comment">Comment:</label>
+					<input type="text" id="comment" name="comment">
+					<button type="submit">Submit</button>
+				</form>
+				<ul class="comments">
+					<li class="comment">
+						<p>User6: Love the beach!</p>
+		<img src="https://raw.githubusercontent.com/l22j/Photo/main/photo/230409_4.jpg" alt="Photo 4">
+		<div class="caption-container">
+			<div class="caption-text">
+				<h2>Photo 4</h2>
+				<p>This is the fourth photo.</p>
+			</div>
+			<div class="comment-section">
+				<h3>Comments</h3>
+				<form>
+					<label for="comment-input-4">Add a comment:</label><br>
+					<input type="text" id="comment-input-4" name="comment-input-4"><br>
+					<button type="submit">Submit</button>
+				</form>
+				<ul class="comment-list">
+					<li class="comment">This photo is beautiful.</li>
+					<li class="comment">I love the colors in this photo.</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
